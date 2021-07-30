@@ -6,9 +6,13 @@ const PIXEL_DRAWN_CLASS = "drawn";
 const ROW_CLASS = "row";
 const GRID_CLASS = "grid";
 
-const gridContainer = document.getElementById(GRID_CLASS);
-getNewGrid(GRID_WIDTH, GRID_HEIGHT).forEach(appendRowToGrid, gridContainer);
+const gridContainer = getGrid();
+createNewGrid(GRID_WIDTH, GRID_HEIGHT).forEach(appendRowToGrid, gridContainer);
 addMouseOverToPixels();
+
+function getGrid() {
+    return document.getElementById(GRID_CLASS);
+}
 
 function addMouseOverToPixels() {
     const pixels = document.querySelectorAll(`.${PIXEL_CLASS}`);
@@ -27,7 +31,7 @@ function appendRowToGrid(row) {
     this.appendChild(row);
 }
 
-function getNewGrid(width, height) {
+function createNewGrid(width, height) {
     const grid = [];
 
     for (let i = 0; i < height; i++) {
@@ -52,4 +56,12 @@ function getNewPixel() {
     const pixel = document.createElement('div');
     pixel.classList.add('pixel');
     return pixel;
+}
+
+function clearGrid() {
+    const drawnPixel = getGrid().querySelectorAll('.drawn');
+    drawnPixel.forEach(pixel => {
+        pixel.classList.remove('drawn');
+        pixel.addEventListener('mouseenter', mouseOverEvent);
+    });
 }
