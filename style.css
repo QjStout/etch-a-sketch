@@ -35,3 +35,7 @@ body {
     width: 20px;
     border: 0.1rem solid var(--jonquil);
 }
+
+.pixel.drawn {
+    background-color: var(--blue-sapphire);
+}
