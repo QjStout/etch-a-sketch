@@ -39,8 +39,8 @@ h1 {
 }
 
 .pixel {
-    height: 29.25px;
-    width: 29.25px;
+    height: 20px;
+    width: 20px;
     border: 1px solid var(--jonquil);
 }
 
@@ -50,10 +50,16 @@ h1 {
 
 #control-panel {
     margin-top: 5px;
+    position: relative;
 }
 
 .controls {
     border-radius: 0 0 40% 40%;
     background-color: var(--jonquil);
     margin-left: 5px;
+}
+
+#btn-new-grid {
+    border-radius: 0;
+    position: absolute;
 }

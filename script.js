@@ -65,3 +65,8 @@ function clearGrid() {
         pixel.addEventListener('mouseenter', mouseOverEvent);
     });
 }
+
+function sizeBtnClicked() {
+    const input = prompt("Enter Numer 1-100");
+    console.log(input);
+}
