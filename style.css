@@ -47,3 +47,13 @@ h1 {
 .pixel.drawn {
     background-color: var(--blue-sapphire);
 }
+
+#control-panel {
+    margin-top: 5px;
+}
+
+.controls {
+    border-radius: 0 0 40% 40%;
+    background-color: var(--jonquil);
+    margin-left: 5px;
+}
