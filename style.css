@@ -31,9 +31,9 @@ body {
 }
 
 .pixel {
-    height: 20px;
-    width: 20px;
-    border: 0.1rem solid var(--jonquil);
+    height: 29.25px;
+    width: 29.25px;
+    border: 1px solid var(--jonquil);
 }
 
 .pixel.drawn {
