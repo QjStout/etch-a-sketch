@@ -10,27 +10,6 @@ const gridContainer = getGrid();
 createNewGrid(GRID_WIDTH, GRID_HEIGHT).forEach(appendRowToGrid, gridContainer);
 addMouseOverToPixels();
 
-function getGrid() {
-    return document.getElementById(GRID_CLASS);
-}
-
-function addMouseOverToPixels() {
-    const pixels = document.querySelectorAll(`.${PIXEL_CLASS}`);
-
-    pixels.forEach(pixel => {
-        pixel.addEventListener('mouseenter', mouseOverEvent);
-    });
-}
-
-function mouseOverEvent() {
-    this.removeEventListener('mouseenter', mouseOverEvent);
-    this.classList.add(PIXEL_DRAWN_CLASS);
-}
-
-function appendRowToGrid(row) {
-    this.appendChild(row);
-}
-
 function createNewGrid(width, height) {
     const grid = [];
 
@@ -54,16 +33,37 @@ function getNewRow(rowLength) {
 
 function getNewPixel() {
     const pixel = document.createElement('div');
-    pixel.classList.add('pixel');
+    pixel.classList.add(PIXEL_CLASS);
     return pixel;
 }
 
+function appendRowToGrid(row) {
+    this.appendChild(row);
+}
+
 function clearGrid() {
-    const drawnPixel = getGrid().querySelectorAll('.drawn');
+    const drawnPixel = getGrid().querySelectorAll(`.${PIXEL_DRAWN_CLASS}`);
     drawnPixel.forEach(pixel => {
         pixel.classList.remove('drawn');
         pixel.addEventListener('mouseenter', mouseOverEvent);
     });
+}
+
+function getGrid() {
+    return document.getElementById(GRID_CLASS);
+}
+
+function addMouseOverToPixels() {
+    const pixels = document.querySelectorAll(`.${PIXEL_CLASS}`);
+
+    pixels.forEach(pixel => {
+        pixel.addEventListener('mouseenter', mouseOverEvent);
+    });
+}
+
+function mouseOverEvent() {
+    this.removeEventListener('mouseenter', mouseOverEvent);
+    this.classList.add(PIXEL_DRAWN_CLASS);
 }
 
 function sizeBtnClicked() {
