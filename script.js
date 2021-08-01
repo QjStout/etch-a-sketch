@@ -76,7 +76,7 @@ function mouseOverEvent() {
 function sizeBtnClicked() {
     let input = prompt("Enter Number", "30");
     if(input === null) { return; };
-    if(isNaN(input)) { return alert(`'${input}' is not a number between 1-100`); };
+    if(isNaN(input) || input < 1 || input > 100) { return alert(`'${input}' is not a number between 1-100`); };
 
     getGrid().innerText = '';
     input = parseInt(input);
