@@ -1,6 +1,8 @@
 const GRID_HEIGHT = 16;
 const GRID_WIDTH = 16;
 
+const GRID_SIZE = 500;
+
 const PIXEL_CLASS = "pixel";
 const PIXEL_DRAWN_CLASS = "drawn";
 const ROW_CLASS = "row";
@@ -24,16 +26,21 @@ function getNewRow(rowLength) {
     const row = document.createElement('div');
     row.classList.add(ROW_CLASS);
 
+    const pixelSize = GRID_SIZE/rowLength-2;
+
     for (let i = 0; i < rowLength; i++) {
-        row.appendChild(getNewPixel());
+        row.appendChild(getNewPixel(pixelSize));
     }
     
     return row;
 }
 
-function getNewPixel() {
+function getNewPixel(size) {
     const pixel = document.createElement('div');
     pixel.classList.add(PIXEL_CLASS);
+    pixel.style.height = `${size}px`;
+    pixel.style.width = `${size}px`;
+
     return pixel;
 }
 
@@ -67,6 +74,13 @@ function mouseOverEvent() {
 }
 
 function sizeBtnClicked() {
-    const input = prompt("Enter Numer 1-100");
-    console.log(input);
+    let input = prompt("Enter Number", "30");
+    if(input === null) { return; };
+    if(isNaN(input)) { return alert(`'${input}' is not a number between 1-100`); };
+
+    getGrid().innerText = '';
+    input = parseInt(input);
+
+    createNewGrid(input, input).forEach(appendRowToGrid, getGrid());
+    addMouseOverToPixels();
 }
